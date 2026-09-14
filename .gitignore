@@ -1,44 +1,220 @@
-# ---- 依赖 ----
-node_modules/
-.venv/
-venv/
-__pycache__/
-*.pyc
-*.pyo
-vendor/
+# ============================================================
+#  CTF Writeups 仓库忽略规则
+#  原则：宁可多忽略，不可漏泄密
+# ============================================================
 
-# ---- 构建产物 ----
-dist/
-build/
-*.o
-*.exe
-*.dll
-
-# ---- 编辑器 / 系统 ----
-.vscode/
-.idea/
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# ---- 敏感信息（永远不要提交！）----
+# ---------- 密钥与凭据（最高优先级）----------
+# 环境变量文件 —— 注意用 .env* 而非 .env，覆盖所有变体
 .env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+
+# 各类私钥与证书
 *.key
 *.pem
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.ppk
 id_rsa*
+id_dsa*
+id_ecdsa*
 id_ed25519*
+*.priv
+private*.json
+
+# 凭据 / 配置文件
 credentials.json
 secrets.yml
+secrets.yaml
+*credential*.json
+service-account*.json
+.netrc
+.htpasswd
 
-# ---- CTF 相关 ----
-# flag 文件仅本地保存
-**/flag.txt
-**/flag.php
-# 靶机地址与凭据
-targets.local.md
+# 云平台凭据
+.aws/
+.azure/
+.gcloud/
+*.tfvars
+*.tfstate
+*.tfstate.*
 
-# ---- 日志与临时文件 ----
+# ---------- 依赖 ----------
+node_modules/
+.npm/
+.pnpm-store/
+.yarn/
+bower_components/
+vendor/
+Pods/
+.venv/
+venv/
+env/
+ENV/
+__pypackages__/
+*.egg-info/
+.eggs/
+
+# ---------- Python 编译与缓存 ----------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+.hypothesis/
+.ipynb_checkpoints/
+.jupyter/
+
+# ---------- 其他语言构建产物 ----------
+# C / C++
+*.o
+*.obj
+*.so
+*.so.*
+*.a
+*.lib
+*.out
+*.elf
+*.bin
+CMakeFiles/
+cmake-build-*/
+# Java
+target/
+*.class
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+*.war
+# Rust / Go
+Cargo.lock
+*.test
+# C# / .NET / Visual Studio
+bin/
+obj/
+.vs/
+*.user
+*.suo
+*.userprefs
+# 通用
+dist/
+out/
+build/
+Debug/
+Release/
+*.exe
+*.dll
+*.dylib
+*.msi
+*.app
+*.apk
+*.ipa
+
+# ---------- 编辑器与 IDE ----------
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json.example
+.idea/
+*.iml
+*.swp
+*.swo
+*~
+.history/
+.cursor/
+.windsurf/
+*.code-workspace
+
+# ---------- 操作系统 ----------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# ---------- 数据与压缩包 ----------
+*.db
+*.sqlite
+*.sqlite3
+*.dump
+*.sql
+!schema.sql
+*.zip
+*.rar
+*.7z
+*.tar
+*.tar.gz
+*.tgz
+*.bz2
+*.xz
+
+# ---------- 日志与临时文件 ----------
 *.log
+logs/
 *.tmp
+*.temp
 *.bak
+*.old
+*.orig
+*.rej
+*.pid
+*.seed
 .cache/
+.temp/
+tmp/
+
+# ---------- CTF 专属 ----------
+# 题目给的 flag 文件，只在本地保留，绝不入库
+**/flag.txt
+**/flag
+**/flag.php
+**/flag.py
+**/flag.js
+**/flag.json
+**/flag.md
+# 靶机地址与凭据（按需保留模板文件）
+targets.local.*
+!targets.example.md
+# 抓包与扫描产物
+*.pcap
+*.pcapng
+*.burp
+*_scan.*
+nmap_*.txt
+gobuster_*.txt
+ffuf_*.json
+# 反弹 shell / 载荷临时文件
+shell.*
+*_shell.*
+payload_out.*
+
+# ---------- 大文件（避免仓库膨胀）----------
+*.iso
+*.vmdk
+*.vdi
+*.qcow2
+*.ova
+*.mp4
+*.mkv
+*.avi
+*.psd
+*.ai
+
+# ---------- 本地个人笔记 ----------
+notes.local.md
+TODO.local.md
+*.local.md

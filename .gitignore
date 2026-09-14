@@ -1,0 +1,44 @@
+# ---- 依赖 ----
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+vendor/
+
+# ---- 构建产物 ----
+dist/
+build/
+*.o
+*.exe
+*.dll
+
+# ---- 编辑器 / 系统 ----
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- 敏感信息（永远不要提交！）----
+.env
+*.key
+*.pem
+id_rsa*
+id_ed25519*
+credentials.json
+secrets.yml
+
+# ---- CTF 相关 ----
+# flag 文件仅本地保存
+**/flag.txt
+**/flag.php
+# 靶机地址与凭据
+targets.local.md
+
+# ---- 日志与临时文件 ----
+*.log
+*.tmp
+*.bak
+.cache/
